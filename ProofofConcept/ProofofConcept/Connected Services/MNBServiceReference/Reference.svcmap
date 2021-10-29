@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ccc367de-eafb-45fb-a0fc-c0278c8f3837" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1681439a-c40f-47d5-bb23-fc0a612a56fa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://www.mnb.hu/arfolyamok.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://www.mnb.hu/arfolyamok.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="arfolyamok.xsd" MetadataType="Schema" ID="5abe7f49-be75-4a34-87ba-e796eac45dda" SourceId="1" SourceUrl="http://www.mnb.hu/arfolyamok.asmx?xsd=xsd1" />
-    <MetadataFile FileName="arfolyamok.disco" MetadataType="Disco" ID="f0dc8867-e750-477f-8540-306afb88e170" SourceId="1" SourceUrl="http://www.mnb.hu/arfolyamok.asmx?disco" />
-    <MetadataFile FileName="MNBArfolyamServiceSoapImpl.wsdl" MetadataType="Wsdl" ID="fbcb248f-8812-472c-b664-ebf478d44240" SourceId="1" SourceUrl="http://www.mnb.hu/arfolyamok.asmx?wsdl" />
-    <MetadataFile FileName="arfolyamok.wsdl" MetadataType="Wsdl" ID="63d90f87-3525-4ca8-8893-5a818a017324" SourceId="1" SourceUrl="http://www.mnb.hu/arfolyamok.asmx?wsdl=wsdl0" />
-    <MetadataFile FileName="arfolyamok1.xsd" MetadataType="Schema" ID="d080d2de-c9c3-460c-8d44-e37243f5bf8c" SourceId="1" SourceUrl="http://www.mnb.hu/arfolyamok.asmx?xsd=xsd0" />
+    <MetadataFile FileName="arfolyamok.wsdl" MetadataType="Wsdl" ID="6cdce83a-d32a-44d9-9ecf-fa9e120f0e3b" SourceId="1" SourceUrl="https://www.mnb.hu/arfolyamok.asmx?wsdl=wsdl0" />
+    <MetadataFile FileName="arfolyamok.disco" MetadataType="Disco" ID="e2fce1c4-2316-4d82-916b-8f95ed17053f" SourceId="1" SourceUrl="https://www.mnb.hu/arfolyamok.asmx?disco" />
+    <MetadataFile FileName="arfolyamok.xsd" MetadataType="Schema" ID="ec574ed2-cc1b-4a2d-a6cd-df90bf6fb200" SourceId="1" SourceUrl="https://www.mnb.hu/arfolyamok.asmx?xsd=xsd1" />
+    <MetadataFile FileName="MNBArfolyamServiceSoapImpl.wsdl" MetadataType="Wsdl" ID="e810ee6a-60ae-40f4-80b7-9bc92fdb7a40" SourceId="1" SourceUrl="https://www.mnb.hu/arfolyamok.asmx?wsdl" />
+    <MetadataFile FileName="arfolyamok1.xsd" MetadataType="Schema" ID="e625517d-ff64-4708-94ea-25c0b1d5f62c" SourceId="1" SourceUrl="https://www.mnb.hu/arfolyamok.asmx?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

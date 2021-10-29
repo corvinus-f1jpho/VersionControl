@@ -15,6 +15,12 @@ namespace ProofofConcept
         public Form1()
         {
             InitializeComponent();
+            Consume();
+        }
+
+        void Consume()
+        {
+            MNbArfolyamServiceSoapClient
         }
     }
 }
