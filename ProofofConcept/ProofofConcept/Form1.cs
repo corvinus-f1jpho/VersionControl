@@ -22,7 +22,14 @@ namespace ProofofConcept
         public Form1()
         {
             InitializeComponent();
-            Consume();
+
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            Rates.Clear();
+            string xmlstring=Consume();
             LoadXml(xmlstring);
             dataGridView1.DataSource = Rates;
         }
@@ -33,9 +40,9 @@ namespace ProofofConcept
 
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = "EUR",
-                startDate = "2020-01-01",
-                endDate = "2020-06-30"
+                currencyNames = cbxValuta.SelectedItem.ToString(), // "EUR",
+                startDate = tolPicker.Value.ToString(), //"2020-01-01",
+                endDate = igPicker.Value.ToString()//"2020-06-30"
             };
 
             var response = mnbService.GetExchangeRates(request);
@@ -86,6 +93,24 @@ namespace ProofofConcept
             chartArea.AxisY.IsStartedFromZero = false;
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void tolPicker_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void igPicker_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void cbxValuta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
     }
 }
