@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace ProofofConcept
 {
@@ -20,10 +21,11 @@ namespace ProofofConcept
         {
             InitializeComponent();
             Consume();
+            LoadXml(xmlstring);
             dataGridView1.DataSource = Rates;
         }
 
-        void Consume()
+        string Consume()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
 
@@ -37,7 +39,29 @@ namespace ProofofConcept
             var response = mnbService.GetExchangeRates(request);
 
             string result = response.GetExchangeRatesResult;
-            File.WriteAllText("export.xml", result);
+            return result;
+            //File.WriteAllText("export.xml", result);
+        }
+
+        void LoadXml(string input) 
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(input);
+            foreach (XmlElement element in xml.DocumentElement)
+            {                
+                var rate = new RateData();
+                Rates.Add(rate);
+
+                rate.Date = DateTime.Parse(element.GetAttribute("date"));
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rate.Currency = childElement.GetAttribute("curr");
+
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit != 0)
+                    rate.Value = value / unit;
+            }
         }
     }
 }
