@@ -1,4 +1,5 @@
-﻿using ProofofConcept.Entities;
+﻿using com.sun.xml.@internal.xsom;
+using ProofofConcept.Entities;
 using ProofofConcept.MNBServiceReference;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 
 namespace ProofofConcept
@@ -43,7 +45,7 @@ namespace ProofofConcept
             //File.WriteAllText("export.xml", result);
         }
 
-        void LoadXml(string input) 
+        private void LoadXml(string input) 
         {
             XmlDocument xml = new XmlDocument();
             xml.LoadXml(input);
@@ -63,5 +65,27 @@ namespace ProofofConcept
                     rate.Value = value / unit;
             }
         }
+
+
+        private void Charting()
+        {
+            chartRateData.DataSource = Rates;
+
+            var series = chartRateData.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+
+            var legend = chartRateData.Legends[0];
+            legend.Enabled = false;
+
+            var chartArea = chartRateData.ChartAreas[0];
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.Enabled = false;
+            chartArea.AxisY.IsStartedFromZero = false;
+        }
+
+        
     }
 }
