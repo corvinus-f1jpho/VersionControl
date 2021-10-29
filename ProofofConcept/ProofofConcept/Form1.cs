@@ -1,4 +1,5 @@
-﻿using ProofofConcept.MNBServiceReference;
+﻿using ProofofConcept.Entities;
+using ProofofConcept.MNBServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,12 @@ namespace ProofofConcept
 {
     public partial class Form1 : Form
     {
+        BindingList<RateData> Rates = new BindingList<RateData>();
         public Form1()
         {
             InitializeComponent();
             Consume();
+            dataGridView1.DataSource = Rates;
         }
 
         void Consume()
