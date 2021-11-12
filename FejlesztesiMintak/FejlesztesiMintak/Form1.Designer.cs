@@ -38,16 +38,16 @@ namespace FejlesztesiMintak
             this.createTimer = new System.Windows.Forms.Timer(this.components);
             this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
             this.btnColor = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.colorBox = new System.Windows.Forms.Button();
+            this.colorRibbon = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
             this.mainPanel.AutoSize = true;
-            this.mainPanel.Controls.Add(this.button3);
-            this.mainPanel.Controls.Add(this.button2);
+            this.mainPanel.Controls.Add(this.colorRibbon);
+            this.mainPanel.Controls.Add(this.colorBox);
             this.mainPanel.Controls.Add(this.btnColor);
             this.mainPanel.Controls.Add(this.lblNext);
             this.mainPanel.Controls.Add(this.btnSelectPresent);
@@ -118,24 +118,24 @@ namespace FejlesztesiMintak
             this.btnColor.UseVisualStyleBackColor = false;
             this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
-            // button2
+            // colorBox
             // 
-            this.button2.BackColor = System.Drawing.Color.Red;
-            this.button2.CausesValidation = false;
-            this.button2.Location = new System.Drawing.Point(368, 132);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(143, 38);
-            this.button2.TabIndex = 2;
-            this.button2.UseVisualStyleBackColor = false;
+            this.colorBox.BackColor = System.Drawing.Color.Red;
+            this.colorBox.CausesValidation = false;
+            this.colorBox.Location = new System.Drawing.Point(368, 132);
+            this.colorBox.Name = "colorBox";
+            this.colorBox.Size = new System.Drawing.Size(143, 38);
+            this.colorBox.TabIndex = 2;
+            this.colorBox.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // colorRibbon
             // 
-            this.button3.BackColor = System.Drawing.Color.Yellow;
-            this.button3.Location = new System.Drawing.Point(368, 176);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(143, 38);
-            this.button3.TabIndex = 2;
-            this.button3.UseVisualStyleBackColor = false;
+            this.colorRibbon.BackColor = System.Drawing.Color.Yellow;
+            this.colorRibbon.Location = new System.Drawing.Point(368, 176);
+            this.colorRibbon.Name = "colorRibbon";
+            this.colorRibbon.Size = new System.Drawing.Size(143, 38);
+            this.colorRibbon.TabIndex = 2;
+            this.colorRibbon.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -161,8 +161,8 @@ namespace FejlesztesiMintak
         private System.Windows.Forms.Button btnSelectPresent;
         private System.Windows.Forms.Button btnSelectCar;
         private System.Windows.Forms.Button btnSelectBall;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button colorRibbon;
+        private System.Windows.Forms.Button colorBox;
         private System.Windows.Forms.Button btnColor;
     }
 }
