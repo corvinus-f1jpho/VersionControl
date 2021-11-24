@@ -10,10 +10,7 @@ using System.Windows.Forms;
 namespace FejlesztesiMintak.Entities
 {
     public class Ball : Toy
-
     {
-      
-
         public SolidBrush BallColor { get; private set; }
 
         public Ball(Color color)
