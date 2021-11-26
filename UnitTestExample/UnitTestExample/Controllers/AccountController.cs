@@ -32,6 +32,7 @@ namespace UnitTestExample.Controllers
 
             var account = new Account()
             {
+                ID = Guid.NewGuid(),
                 Email = email,
                 Password = password
             };
@@ -58,14 +59,10 @@ namespace UnitTestExample.Controllers
             else if (!Regex.IsMatch(password, @"[a-z]."))
                 return false;
 
-            else if (!Regex.IsMatch(
-              password,
-              @"[A-Z]."))
+            else if (!Regex.IsMatch(password, @"[A-Z]."))
                 return false;
 
-            else if (!Regex.IsMatch(
-              password,
-              @"[0-9]."))
+            else if (!Regex.IsMatch(password, @"[0-9]."))
                 return false;
 
             return true;

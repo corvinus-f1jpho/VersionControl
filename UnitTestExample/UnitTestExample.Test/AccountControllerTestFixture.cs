@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Activities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,9 +38,8 @@ namespace UnitTestExample.Test
             TestCase("ABCD1234", false),
             TestCase("abcdABCD", false),
             TestCase("abCD12", false),
-
-
-            
+            TestCase("abCD1234", false),
+            TestCase("abCDEF1234", false)            
         ]
 
         public void TestValidatePassword(string password, bool expectedResult)
@@ -53,6 +53,57 @@ namespace UnitTestExample.Test
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
 
+        }
+
+        [
+            Test,
+            TestCase("irf@uni-corvinus.hu", "Abcd1234"),
+            TestCase("irf@uni-corvinus.hu", "Abcd1234567"),
+        ]
+        public void TestRegisterHappyPath(string email, string password)
+        {
+            // Arrange
+            var accountController = new AccountController();
+
+            // Act
+            var actualResult = accountController.Register(email, password);
+
+            // Assert
+            Assert.AreEqual(email, actualResult.Email);
+            Assert.AreEqual(password, actualResult.Password);
+            Assert.AreNotEqual(Guid.Empty, actualResult.ID);
+        }
+
+
+        [
+            Test,
+            TestCase("irf@uni-corvinus", "Abcd1234"),
+            TestCase("irf.uni-corvinus.hu", "Abcd1234"),
+            TestCase("irf@uni-corvinus.hu", "abcd1234"),
+            TestCase("irf@uni-corvinus.hu", "ABCD1234"),
+            TestCase("irf@uni-corvinus.hu", "abcdABCD"),
+            TestCase("irf@uni-corvinus.hu", "Ab1234"),
+        ]
+        public void TestRegisterValidationException(string email, string password)
+        {
+            // Arrange
+            var accountController = new AccountController();
+
+            // Act
+            // Assert
+
+            try
+            {
+                accountController.Register(email, password);
+                Assert.Fail();
+            }
+            catch (Exception ex)
+            {
+
+                Assert.IsInstanceOf<ValidationException>(ex);
+            }
+
+            
         }
     }
 }
