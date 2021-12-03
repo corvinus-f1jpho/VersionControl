@@ -14,6 +14,8 @@ namespace Mikroszimulacio
 {
     public partial class Form1 : Form
     {
+        Random rng = new Random(1234);
+
         List<Person> Population = new List<Person>();
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
@@ -59,7 +61,7 @@ namespace Mikroszimulacio
                     {
                         Age=int.Parse(line[0]),
                         NbrOfChildren = int.Parse(line[2]),
-                        P=double.Parse(line[2])
+                        P=double.Parse(line[2].Replace(",", "."))
                     });
                 }
             }
@@ -79,7 +81,7 @@ namespace Mikroszimulacio
                     {                       
                         Gender = (Gender)Enum.Parse(typeof(Gender), line[0]),
                         Age = int.Parse(line[1]),
-                        P = double.Parse(line[2])
+                        P = double.Parse(line[2].Replace(",", "."))
                     });
                 }
             }
