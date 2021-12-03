@@ -12,7 +12,7 @@ using Mikroszimulacio.Entities;
 
 namespace Mikroszimulacio
 {
-    public partial class Form1 : Form
+    public partial class MicroSimulation : Form
     {
         Random rng = new Random(1234);
 
@@ -20,15 +20,20 @@ namespace Mikroszimulacio
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
 
-        public Form1()
+        public MicroSimulation()
         {
             InitializeComponent();
 
-            Population = GetPopulation(@"C:\Temp\nép.csv");
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
+            
+        }
 
-            for (int year = 2005; year <= 2024; year++)
+        private void StartSimulation(int endYear, string csvPath)
+        {
+            Population = GetPopulation(csvPath);
+
+            for (int year = 2005; year <= endYear; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
@@ -41,12 +46,11 @@ namespace Mikroszimulacio
                 int nbrOfFemales = (from x in Population
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
-                Console.WriteLine(
-                    string.Format(
-                        "Év:{0}\nFiúk: {1}\nLányok: {2}\n", 
-                        year, 
-                        nbrOfMales, 
-                        nbrOfFemales));
+                txtMain2.Text+=string.Format(
+                        "Szimulációs év:{0}\n\tFiúk: {1}\n\tLányok: {2}\n\n",
+                        year,
+                        nbrOfMales,
+                        nbrOfFemales);
             }
         }
 
@@ -117,7 +121,7 @@ namespace Mikroszimulacio
                     var line = sr.ReadLine().Split(';');
                     birthProbabilities.Add(new BirthProbability()
                     {
-                        Age=int.Parse(line[0]),
+                        Age=byte.Parse(line[0]),
                         NbrOfChildren = int.Parse(line[2]),
                         P=double.Parse(line[2].Replace(",", "."))
                     });
@@ -138,12 +142,28 @@ namespace Mikroszimulacio
                     deathProbabilities.Add(new DeathProbability()
                     {                       
                         Gender = (Gender)Enum.Parse(typeof(Gender), line[0]),
-                        Age = int.Parse(line[1]),
+                        Age = byte.Parse(line[1]),
                         P = double.Parse(line[2].Replace(",", "."))
                     });
                 }
             }
             return deathProbabilities;
+        }       
+
+        private void btnStart2_Click(object sender, EventArgs e)
+        {
+            StartSimulation((int)nudYear2.Value, txtPath2.Text);
+        }
+
+        private void btnBrowse2_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+            ofd.FileName = txtPath2.Text;
+
+            if (ofd.ShowDialog()!=DialogResult.OK)            
+                return;
+            txtPath2.Text = ofd.FileName;
+            
         }
     }
 }
