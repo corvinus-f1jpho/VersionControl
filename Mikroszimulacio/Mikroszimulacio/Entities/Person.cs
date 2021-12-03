@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Mikroszimulacio.Entities
 {
-    public class BirthProbability
+    public class Person
     {
         public int BirthYear { get; set; }
         public Gender Gender { get; set; }
         public int NbrOfChildren { get; set; }
         public bool IsAlive { get; set; }
 
-        public BirthProbability()
+        public Person()
         {
             IsAlive = true;
         }
